@@ -4,7 +4,14 @@
   "description": "Projection-based tree virtualization engine for GB-scale object trees",
   "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -36,7 +43,7 @@
     "large-dataset",
     "pagination"
   ],
-  "author": "Erdem Arslan <erdemarslan@ymail.com>",
+  "author": "Erdem Arslan <me@erdem.work>",
   "license": "MIT",
   "repository": {
     "type": "git",

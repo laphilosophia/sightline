@@ -47,7 +47,7 @@ describe('provider', () => {
       addNode(registry, root)
 
       const providers = createProviderRegistry()
-      let epoch = 1
+      const epoch = 1
 
       const result = await triggerChildResolution(registry, providers, 'root', epoch, () => epoch)
 
@@ -71,7 +71,7 @@ describe('provider', () => {
         resolveChildren: vi.fn().mockResolvedValue(mockChildren),
       })
 
-      let epoch = 1
+      const epoch = 1
 
       const result = await triggerChildResolution(registry, providers, 'root', epoch, () => epoch)
 
@@ -95,7 +95,7 @@ describe('provider', () => {
       })
 
       const capturedEpoch = 1
-      let currentEpoch = 2 // Changed during resolution
+      const currentEpoch = 2 // Changed during resolution
 
       const result = await triggerChildResolution(
         registry,
@@ -119,7 +119,7 @@ describe('provider', () => {
         resolveChildren: vi.fn().mockRejectedValue(new Error('Network error')),
       })
 
-      let epoch = 1
+      const epoch = 1
 
       const result = await triggerChildResolution(registry, providers, 'root', epoch, () => epoch)
 

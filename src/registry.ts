@@ -70,7 +70,7 @@ export function createNode(
     nodeId,
     parentNodeId: options.parentNodeId ?? null,
     childState: hasResolvedChildren
-      ? options.childNodeIds!.length > 0
+      ? options.childNodeIds && options.childNodeIds.length > 0
         ? 'RESOLVED'
         : 'EMPTY'
       : 'UNRESOLVED',

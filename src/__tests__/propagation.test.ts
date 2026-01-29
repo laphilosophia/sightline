@@ -142,8 +142,8 @@ describe('propagation', () => {
       addNode(registry, childA2)
 
       // Expand childA
-      const nodeA = registry.get('a')!
-      nodeA.isExpanded = true
+      const nodeA = registry.get('a')
+      if (nodeA) nodeA.isExpanded = true
 
       const newSize = recalculateAndPropagate(registry, 'a')
 
@@ -172,8 +172,8 @@ describe('propagation', () => {
       addNode(registry, childA2)
 
       // Collapse childA
-      const nodeA = registry.get('a')!
-      nodeA.isExpanded = false
+      const nodeA = registry.get('a')
+      if (nodeA) nodeA.isExpanded = false
 
       const newSize = recalculateAndPropagate(registry, 'a')
 

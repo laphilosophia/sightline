@@ -57,7 +57,10 @@ export function expand(registry: NodeRegistry, nodeId: NodeID): ExpandResult {
   return {
     success: true,
     needsProvider: false,
-    newVisibleCount: registry.get(registry.getRootId()!)?.visibleSubtreeSize,
+    newVisibleCount:
+      registry.getRootId() !== null
+        ? registry.get(registry.getRootId() as NodeID)?.visibleSubtreeSize
+        : undefined,
   }
 }
 

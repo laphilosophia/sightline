@@ -96,7 +96,8 @@ describe('integration', () => {
         })
       )
       // Set correct size
-      registry.get('root')!.visibleSubtreeSize = 11
+      const rootNode = registry.get('root')
+      if (rootNode) rootNode.visibleSubtreeSize = 11
 
       childIds.forEach((id, i) => {
         addNode(

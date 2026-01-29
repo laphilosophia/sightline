@@ -8,7 +8,7 @@ export default tseslint.config(
   ...tseslint.configs.stylistic,
   eslintConfigPrettier,
   {
-    ignores: ['dist/', 'node_modules/', 'coverage/'],
+    ignores: ['dist/', 'node_modules/', 'coverage/', 'src/benchmark.ts'],
   },
   {
     files: ['src/**/*.ts'],
@@ -25,5 +25,5 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
     },
-  },
+  }
 )

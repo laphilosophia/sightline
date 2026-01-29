@@ -36,6 +36,27 @@ export type { ExpandResult } from './controller'
 // Query
 export { getNodeView, getRange, getTotalVisibleCount } from './query'
 
+// Provider
+export { createGlobalProvider, createProviderRegistry, triggerChildResolution } from './provider'
+export type { ProviderRegistry, ResolutionResult } from './provider'
+
+// Mutations (internal utilities for worker/orchestration)
+export { insertNode, moveNode, removeNode, reorderChildren } from './mutations'
+
+// Errors
+export {
+  ChildResolutionError,
+  getErrorCode,
+  IndexOutOfBoundsError,
+  isFatalError,
+  isRecoverableError,
+  isSightlineError,
+  NodeNotFoundError,
+  RegistryCorruptedError,
+  SightlineError,
+  StaleEpochError,
+} from './errors'
+
 // =============================================================================
 // SIGHTLINE FACTORY
 // =============================================================================

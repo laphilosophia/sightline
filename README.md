@@ -145,30 +145,6 @@ if (result.needsProvider) {
 
 ---
 
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     SOURCE DATA                              │
-│  (GB-scale JSON, RenderTree, any tree structure)            │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    SIGHTLINE ENGINE                          │
-│  ┌─────────────┐  ┌─────────────────┐  ┌────────────────┐   │
-│  │ NodeRegistry │  │VisibleSubtree  │  │ Range Query    │   │
-│  │ Map<ID,Node> │  │ Size Propagator │  │ O(log n)       │   │
-│  └─────────────┘  └─────────────────┘  └────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     UI LAYER                                 │
-│  Receives only: NodeView[] (flat, minimal, immutable)       │
-└─────────────────────────────────────────────────────────────┘
-```
-
 ### Key Algorithms
 
 | Module           | Complexity | Purpose                                |
@@ -235,27 +211,6 @@ These approaches are explicitly rejected:
 
 ---
 
-## Design Decisions
-
-### Why No Cursor API?
-
-Cursor (prev/next/position) is **UI state**, not kernel concern. Framework bindings handle cursor:
-
-```typescript
-// In @voltakit/virtual (not Sightline):
-const { position, items } = useSightlineCursor(engine, windowSize)
-```
-
-### Why No Mutation Methods?
-
-Mutations flow through execution layer (Sthira), not direct imperative calls:
-
-```
-UI Intent → Sthira → Worker → Registry mutate → Epoch++ → UI re-query
-```
-
----
-
 ## Modules
 
 | File             | Exports                                            | Purpose                   |
@@ -281,15 +236,6 @@ UI Intent → Sthira → Worker → Registry mutate → Epoch++ → UI re-query
 | TypeScript Strict | ✅ Clean                 |
 | ESLint            | ✅ Clean                 |
 | Documentation     | ✅ Complete              |
-| Graduation        | 🔲 → `@voltakit/virtual` |
-
----
-
-## Graduation Path
-
-Sightline is a PoC incubation project for the [Volta Platform Engine](https://github.com/laphilosophia/volta-next). Upon graduation, it becomes `@voltakit/virtual`.
-
----
 
 ## License
 
